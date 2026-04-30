@@ -1,4 +1,4 @@
-import { ClassExp, ProcExp, Exp, Program } from "./L3-ast";
+import { ClassExp, ProcExp, Exp, Program, makeProcExp } from "./L3-ast";
 import { Result, makeFailure } from "../shared/result";
 
 /*
@@ -8,7 +8,7 @@ Type: ClassExp => ProcExp
 */
 export const class2proc = (exp: ClassExp): ProcExp =>
     //@TODO
-    exp;
+    makeProcExp([], []);
 
 
 /*
