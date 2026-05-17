@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import {  evalL3program } from '../L3/L3-eval-env';
 import { SExpValue, Value, valueToString } from "../L3/L3-value";
 import { Result, bind, isOk, makeOk, makeFailure } from "../shared/result";
@@ -28,7 +27,7 @@ describe('Q2B Tests for environment model', () => {
              )
          )
          pair
-        )`)).to.deep.equal("Class");
+        )`)).toStrictEqual("Class");
     });
 
     it("Test object definition", () => {
@@ -46,7 +45,7 @@ describe('Q2B Tests for environment model', () => {
             (define p34 (pair 3 4))
             p34
         )
-        `)).to.deep.equal("Object");
+        `)).toStrictEqual("Object");
     });    
     
     it("Test object methods application", () => {
@@ -65,7 +64,7 @@ describe('Q2B Tests for environment model', () => {
             (define p34 (pair 3 4))
             (p34 'first)
         )
-        `)).to.deep.equal(makeOk(3));
+        `)).toStrictEqual(makeOk(3));
 
         expect(evalP(`
         (L3
@@ -81,7 +80,7 @@ describe('Q2B Tests for environment model', () => {
             (define p34 (pair 3 4))
             (p34 'second)
         )
-        `)).to.deep.equal(makeOk(4));
+        `)).toStrictEqual(makeOk(4));
 
         expect(evalP(`
         (L3
@@ -97,7 +96,7 @@ describe('Q2B Tests for environment model', () => {
             (define p34 (pair 3 4))
             (p34 'sum)
         )
-        `)).to.deep.equal(makeOk(7));
+        `)).toStrictEqual(makeOk(7));
 
     });    
 
@@ -117,7 +116,7 @@ describe('Q2B Tests for environment model', () => {
         (define p34 (pair 3 4))
         (p34 'f 2)
     )
-    `)).to.deep.equal(makeOk(0.75));
+    `)).toStrictEqual(makeOk(0.75));
 });
 
 
@@ -137,7 +136,7 @@ it("Test unknown methods application for environment model", () => {
         (define p34 (pair 3 4))
         (p34 'power)
     )
-`)).to.deep.equal(makeFailure("Unrecognized method: power"));
+`)).toStrictEqual(makeFailure("Unrecognized method: power"));
 
 });
 
@@ -157,7 +156,7 @@ it("Test unknown field in methods application", () => {
       (define p34 (pair 3 4))
       (p34 'sum)
     )
-`)).to.deep.equal(makeFailure("var not found: c"));
+`)).toStrictEqual(makeFailure("var not found: c"));
 
 });
 
@@ -179,7 +178,7 @@ it("Test nested object methods application", () => {
          )
        )
     )
-    `)).to.deep.equal(makeOk(3));
+    `)).toStrictEqual(makeOk(3));
 
 
  
